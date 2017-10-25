@@ -1,7 +1,7 @@
 FROM debian:jessie-20170723
 
 # add our user and group first to make sure their IDs get assigned consistently, regardless of whatever dependencies get added
-#RUN groupadd -r www-data && useradd -r --create-home -g www-data www-data
+#RUN groupadd -r www-data && useradd -r --create-home -g www-data www-data s
 
 ENV HTTPD_PREFIX /usr/local/apache2
 ENV PATH $HTTPD_PREFIX/bin:$PATH
@@ -69,9 +69,9 @@ RUN set -eux; \
 		dpkg-dev \
 		gcc \
 		liblua5.2-dev \
-		libnghttp2-dev=$NGHTTP2_VERSION \
+		libnghttp2-dev \
 		libpcre++-dev \
-		libssl-dev=$OPENSSL_VERSION \
+		libssl-dev \
 		libxml2-dev \
 		zlib1g-dev \
 		make \
