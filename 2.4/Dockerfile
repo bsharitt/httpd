@@ -1,7 +1,7 @@
-FROM debian:jessie-20170723
+FROM debian:jessie-backports
 
 # add our user and group first to make sure their IDs get assigned consistently, regardless of whatever dependencies get added
-#RUN groupadd -r www-data && useradd -r --create-home -g www-data www-data s
+#RUN groupadd -r www-data && useradd -r --create-home -g www-data www-data
 
 ENV HTTPD_PREFIX /usr/local/apache2
 ENV PATH $HTTPD_PREFIX/bin:$PATH
@@ -38,9 +38,9 @@ RUN apt-get update \
 		libapr1-dev \
 		libaprutil1-dev \
 		liblua5.2-0 \
-		libnghttp2-14 \
+		libnghttp2-14=$NGHTTP2_VERSION \
 		libpcre++0 \
-		libssl1.0.0 \
+		libssl1.0.0=$OPENSSL_VERSION \
 		libxml2 \
 	&& rm -r /var/lib/apt/lists/*
 
@@ -69,9 +69,9 @@ RUN set -eux; \
 		dpkg-dev \
 		gcc \
 		liblua5.2-dev \
-		libnghttp2-dev \
+		libnghttp2-dev=$NGHTTP2_VERSION \
 		libpcre++-dev \
-		libssl-dev \
+		libssl-dev=$OPENSSL_VERSION \
 		libxml2-dev \
 		zlib1g-dev \
 		make \
