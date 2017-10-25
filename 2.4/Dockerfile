@@ -38,9 +38,9 @@ RUN apt-get update \
 		libapr1-dev \
 		libaprutil1-dev \
 		liblua5.2-0 \
-		libnghttp2-14=$NGHTTP2_VERSION \
+		libnghttp2-14 \
 		libpcre++0 \
-		libssl1.0.0=$OPENSSL_VERSION \
+		libssl1.0.0 \
 		libxml2 \
 	&& rm -r /var/lib/apt/lists/*
 
